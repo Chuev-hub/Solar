@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solar.UI", "Solar.UI\Solar.UI.csproj", "{EE255EB6-9916-40F6-B86D-FCB9361E60B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solar.DAL", "Solar.DAL\Solar.DAL.csproj", "{B5A413A3-C8B2-4D9F-B880-4F22282C0530}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solar.BLL", "Solar.BLL\Solar.BLL.csproj", "{02B9F8B5-3C08-4843-BBE4-784CD7769B74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE255EB6-9916-40F6-B86D-FCB9361E60B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE255EB6-9916-40F6-B86D-FCB9361E60B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE255EB6-9916-40F6-B86D-FCB9361E60B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE255EB6-9916-40F6-B86D-FCB9361E60B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5A413A3-C8B2-4D9F-B880-4F22282C0530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5A413A3-C8B2-4D9F-B880-4F22282C0530}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5A413A3-C8B2-4D9F-B880-4F22282C0530}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5A413A3-C8B2-4D9F-B880-4F22282C0530}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02B9F8B5-3C08-4843-BBE4-784CD7769B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02B9F8B5-3C08-4843-BBE4-784CD7769B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02B9F8B5-3C08-4843-BBE4-784CD7769B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02B9F8B5-3C08-4843-BBE4-784CD7769B74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C99B5A9D-7126-4F73-96C9-5C505890627F}
+	EndGlobalSection
+EndGlobal

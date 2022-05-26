@@ -1,0 +1,163 @@
+﻿<UserControl x:Class="Solar.UI.Views.GuitarPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Solar.UI.Views"
+             xmlns:vm="clr-namespace:Solar.UI.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="900" d:DesignWidth="1448">
+    <UserControl.DataContext>
+        <vm:GuitarPageViewModel></vm:GuitarPageViewModel>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <Style TargetType="ScrollBar">
+            <Setter Property="Background" Value="#FF121212"/>
+        </Style>
+        <Style x:Key="DefaultButtonStyle"
+           TargetType="{x:Type Button}">
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Focusable="False"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                              </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
+
+    <Grid>
+        <ScrollViewer  Margin="0,80,0,10">
+            <Grid>
+                <StackPanel>
+                <Grid Background="#FF212121">
+                    <StackPanel>
+                      <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top"  Orientation="Horizontal">
+                            
+                            <Button  Command="{Binding BackCommand}" x:Name="ladbel3"  Style="{DynamicResource DefaultButtonStyle}" Content="Back" Margin="200,20,0,0" VerticalAlignment="Center" FontSize="22" Foreground="#FF7A7A7A" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Padding="5,5,5,8" Background="{x:Null}">
+                                <Button.BorderBrush>
+                                    <SolidColorBrush Color="#FF707070" Opacity="0"/>
+                                </Button.BorderBrush>
+                            </Button>
+                      </StackPanel>
+                      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal">
+
+                                <Label Content="{Binding CurrentGuitar.Name}" FontSize="36" Foreground="#FF7A7A7A" FontWeight="Bold"></Label>
+                                <Label Content=" - " FontSize="36" Foreground="#FF7A7A7A" FontWeight="Bold"></Label>
+                            <Label Content="{Binding CurrentGuitar.Color}" FontSize="36" Foreground="#FF7A7A7A" FontWeight="Bold"/>
+
+                      </StackPanel>
+
+                    <TextBlock TextWrapping="Wrap" Text="{Binding CurrentGuitar.Info}" HorizontalAlignment="Center"  FontSize="20" Foreground="#FF7A7A7A" FontWeight="Bold" Margin="216,0,215,0"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Image Width="800" Height="400" Source="{Binding Main}"></Image>
+                                <StackPanel VerticalAlignment="Center">
+
+                                    <Button Command="{Binding MainCommand}" Style="{StaticResource DefaultButtonStyle}" Width="70" Height="70" Click="Button_Click" >
+                                        <Button.Background>
+                                            <ImageBrush  ImageSource="{Binding CurrentGuitar.MainPhoto}" Stretch="Uniform"/>
+                                        </Button.Background>
+                                    </Button>
+                                    <Button Command="{Binding SecondCommand}" Style="{StaticResource DefaultButtonStyle}" Width="70" Height="70" >
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="{Binding CurrentGuitar.SecondPhoto}" Stretch="Uniform"/>
+                                        </Button.Background>
+                                    </Button>
+                                    <Button Command="{Binding ThirdCommand}" Style="{StaticResource DefaultButtonStyle}" Width="70" Height="70" >
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="{Binding CurrentGuitar.ThirdPhoto}" Stretch="Uniform"/>
+                                        </Button.Background>
+                                    </Button>
+
+                                </StackPanel>
+                              
+                      
+                      </StackPanel>
+                            <StackPanel HorizontalAlignment="Center" Margin="500,0,0,0"  Orientation="Horizontal">
+                                <Label FontSize="36" Foreground="#FF7A7A7A" Content="€" FontFamily="Franklin Gothic Book"></Label>
+                                <Label FontSize="36" Foreground="#FF7A7A7A" FontFamily="Franklin Gothic Book" Content="{Binding CurrentGuitar.Price}"></Label>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Center" Margin="500,0,0,0"  Orientation="Horizontal">
+                                <Button Command="{Binding BuyCommand}" Background="#FF323232"  Width="150" Height="44"  Style="{DynamicResource DefaultButtonStyle}" Content="Buy" Margin="100,20,0,100" VerticalAlignment="Center" FontSize="22" Foreground="#FF7A7A7A" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Padding="5,5,5,8" >
+                                    <Button.BorderBrush>
+                                        <SolidColorBrush Color="#FF707070" Opacity="0"/>
+                                    </Button.BorderBrush>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                </Grid>
+                <Grid Background="#FF121212">
+                        <StackPanel Margin="0,100,0,0"  HorizontalAlignment="Center" Orientation="Horizontal">
+                            <Image Source="{Binding CurrentGuitar.CharacteristicPhoto}" Width="200"></Image>
+                            <StackPanel Margin="30,0,0,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Name:" FontSize="15" Foreground="#FF7A7A7A" FontWeight="Bold" Margin="25,0,0,0"></Label>
+                                    <Label Content="{Binding CurrentGuitar.Name}" FontSize="15" Foreground="#FF7A7A7A" ></Label>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Material:" FontSize="15" Foreground="#FF7A7A7A" FontWeight="Bold" Margin="25,0,0,0"></Label>
+                                    <Label Content="{Binding CurrentGuitar.Material}" FontSize="15" Foreground="#FF7A7A7A" ></Label>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Shape:" FontSize="15" Foreground="#FF7A7A7A" FontWeight="Bold" Margin="25,0,0,0"></Label>
+                                    <Label Content="{Binding CurrentGuitar.Shape}" FontSize="15" Foreground="#FF7A7A7A" ></Label>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Number Of Strings:" FontSize="15" Foreground="#FF7A7A7A" FontWeight="Bold" Margin="25,0,0,0"></Label>
+                                    <Label Content="{Binding CurrentGuitar.NumberOfStrings}" FontSize="15" Foreground="#FF7A7A7A" ></Label>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Color:" FontSize="15" Foreground="#FF7A7A7A" FontWeight="Bold" Margin="25,0,0,0"></Label>
+                                    <Label Content="{Binding CurrentGuitar.Color}" FontSize="15" Foreground="#FF7A7A7A" ></Label>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="LeftHanded:" FontSize="15" Foreground="#FF7A7A7A" FontWeight="Bold" Margin="25,0,0,0"></Label>
+                                    <Label Content="{Binding CurrentGuitar.LeftHanded}" FontSize="15" Foreground="#FF7A7A7A" ></Label>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Switch:" FontSize="15" Foreground="#FF7A7A7A" FontWeight="Bold" Margin="25,0,0,0"></Label>
+                                    <Label Content="{Binding CurrentGuitar.Switch}" FontSize="15" Foreground="#FF7A7A7A"></Label>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Neck:" FontSize="15" Foreground="#FF7A7A7A" FontWeight="Bold" Margin="25,0,0,0"></Label>
+                                    <Label Content="{Binding CurrentGuitar.Neck}" FontSize="15" Foreground="#FF7A7A7A" ></Label>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Middle:" FontSize="15" Foreground="#FF7A7A7A" FontWeight="Bold" Margin="25,0,0,0"></Label>
+                                    <Label Content="{Binding CurrentGuitar.Middle}" FontSize="15" Foreground="#FF7A7A7A" ></Label>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Bridge:" FontSize="15" Foreground="#FF7A7A7A" FontWeight="Bold" Margin="25,0,0,0"></Label>
+                                    <Label Content="{Binding CurrentGuitar.Bridge}" FontSize="15" Foreground="#FF7A7A7A" ></Label>
+                                </StackPanel>
+
+
+                            </StackPanel>
+                        </StackPanel>
+                </Grid>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

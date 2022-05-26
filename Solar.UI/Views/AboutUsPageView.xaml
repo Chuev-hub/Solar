@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="Solar.UI.Views.AboutUsPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Solar.UI.Views"
+             xmlns:vm="clr-namespace:Solar.UI.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="1368" d:DesignWidth="1538">
+    <UserControl.DataContext>
+        <vm:AboutUsPageViewModel></vm:AboutUsPageViewModel>
+    </UserControl.DataContext>
+    <ScrollViewer x:Name="MainPage" Margin= "0,0,0,0"  >
+
+        <Grid>
+
+            <StackPanel>
+                <Label HorizontalAlignment="Center"  Foreground="#FF7A7A7A" FontSize="24" Margin="0,20,0,0" >ABOUT US</Label>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+
+                    <StackPanel HorizontalAlignment="Center" Margin="100,0,0,0" >
+                        <RichTextBox HorizontalAlignment="Center" Background="#FF121212" Foreground="#FF7A7A7A" Height="833" FontSize="20" Width="502"   IsReadOnly="True"    >
+                            <RichTextBox.SelectionBrush>
+                                <SolidColorBrush Color="#FFC9C9C9" Opacity="0.54"/>
+                            </RichTextBox.SelectionBrush>
+                            <RichTextBox.BorderBrush>
+                                <SolidColorBrush Color="#FFABADB3" Opacity="0"/>
+                            </RichTextBox.BorderBrush>
+                            <FlowDocument>
+                                <Paragraph>
+                                    <Run Text="For many years I've been searching—not only for the quintessential guitar tone—but for the perfect tools that would suit both my home recording and my touring needs. What I've learned after talking to people around the world and communicating with both touring and recording artists, is that a lot of us share a similar vision about what a great guitar should be. Whether it's to help record that 'perfect' lead at home or in the studio, or to write the next great song, I want a guitar that takes me closer to that goal by inspiring me to become a better player and songwriter."/>
+                                </Paragraph>
+                                <Paragraph>
+                                    <Run Text="The Solar Guitars brand is the result of years of dedication, focus and passion for guitars. The intention was to design an absolutely killer line of guitars for the modern guitar player, no matter if you are a beginner or a professional. We don't like labeling players; everyone has their own musical goals and aspirations. Solar Guitars is more about providing you with the right tools to help you reach those goals—one guitar at a time."/>
+                                </Paragraph>
+                                <Paragraph>
+                                    <Run Text="We have put every possible effort into designing the finest looking, most comfortable playing and stellar sounding guitars on the market today. We have much more to offer, so we invite you to join our community and ride along with us on our journey to world domination!"/>
+                                </Paragraph>
+                                <Paragraph>
+                                    <Run Text="Ola Englund"/>
+                                </Paragraph>
+                            </FlowDocument>
+
+                        </RichTextBox>
+                        <Image Source="{Binding SignImage}" Width="200" Height="200"></Image>
+                    </StackPanel>
+                    <Image  VerticalAlignment="Top" Width="700" Height="700" Source="{Binding ManImage}"></Image>
+                </StackPanel>
+                <Rectangle Margin="0,70,0,0" Height="1" Fill="#FF515151"></Rectangle>
+                <Image HorizontalAlignment="Center"   Width="40" Height="40" Stretch="Fill" Margin="0,20,0,0"  Source="{Binding SmallLogo}"/>
+                <RichTextBox Background="#FF121212" Foreground="#FF7A7A7A" Height="70" FontSize="12" Width="1232" HorizontalAlignment="Center" VerticalAlignment="Center" IsReadOnly="True" Padding="0" Margin="0,30,0,0" >
+                    <RichTextBox.BorderBrush>
+                        <SolidColorBrush Color="#FFABADB3" Opacity="0"/>
+                    </RichTextBox.BorderBrush>
+                    <FlowDocument>
+                        <Paragraph TextAlignment="Center">
+                            <Run Text="TERMS AND CONDITIONS / PRIVACY POLICY / SHIPPING COSTS AND DELIVERY TIMES / WARRANTY TERMS / RIGHT OF WITHDRAWAL / SUBSCRIBE TO NEWSLETTER"/>
+                        </Paragraph>
+                        <Paragraph TextAlignment="Center">
+                            <Run Text="2017 Chug Express SL - ALL RIGHTS RESERVED - powered by Digital Player Agency"/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+
+
+            </StackPanel>
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>

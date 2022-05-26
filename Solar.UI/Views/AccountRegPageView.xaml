@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Solar.UI.Views.AccountRegPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Solar.UI.Views"
+                       xmlns:vm="clr-namespace:Solar.UI.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="900" d:DesignWidth="1448">
+    <UserControl.DataContext>
+        <vm:AccountRegPageViewModel></vm:AccountRegPageViewModel>
+    </UserControl.DataContext>
+    <Grid HorizontalAlignment="Center" >
+        <Label x:Name="label" Content="Register" HorizontalAlignment="Left" Margin="82,89,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="20" FontWeight="Bold"/>
+        <TextBox Text="{Binding EMAILreg}" x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="82,157,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="140"/>
+        <PasswordBox  PasswordChar="*"   x:Name="PasswordBox" HorizontalAlignment="Left" Height="23" Margin="82,211,0,0"  VerticalAlignment="Top" Width="140"/>
+        <Label x:Name="label_Copy" Content="Email" HorizontalAlignment="Left" Margin="82,121,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="16" FontStyle="Italic"/>
+        <Label x:Name="label_Coy" Content="password" HorizontalAlignment="Left" Margin="82,180,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="16" FontStyle="Italic"/>
+        <Label x:Name="lbel" Content="Log in" HorizontalAlignment="Left" Margin="347,89,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="20" FontWeight="Bold"/>
+        <TextBox x:Name="texBox"  HorizontalAlignment="Left" Height="23" Margin="347,157,0,0" TextWrapping="Wrap" Text="{Binding EMAILlog}" VerticalAlignment="Top" Width="149"/>
+        <PasswordBox x:Name="PasswordBox2" HorizontalAlignment="Left" Height="23" Margin="347,211,0,0"  VerticalAlignment="Top" Width="149"/>
+        <Label x:Name="lel_opy" Content="Email" HorizontalAlignment="Left" Margin="347,121,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="16" FontStyle="Italic"/>
+        <Label x:Name="labl_CoyCopy" Content="password" HorizontalAlignment="Left" Margin="347,180,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="16" FontStyle="Italic"/>
+        <Button Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PasswordBox2 }" x:Name="button" Content="OK" HorizontalAlignment="Left" Margin="422,313,0,0" VerticalAlignment="Top" Width="74" Height="33" Background="#FF939393" Foreground="White"/>
+        <Button Command="{Binding SigninCommand}" IsDefault="True"
+                CommandParameter="{Binding ElementName=PasswordBox }" Content="OK" HorizontalAlignment="Left" Margin="148,313,0,0" VerticalAlignment="Top" Width="74" Height="33" Background="#FF939393" Foreground="White">
+
+        </Button>
+        <Label x:Name="label1"  Content="{Binding Texts}"  HorizontalAlignment="Left" Margin="82,245,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="Red" FontSize="16" FontStyle="Italic"/>
+        <Label x:Name="labe"  Content="{Binding TextsLog}"  HorizontalAlignment="Left" Margin="347,245,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="Red" FontSize="16" FontStyle="Italic"/>
+        <Label x:Name="label1_Copy"  Content="{Binding TextsScs}"  HorizontalAlignment="Left" Margin="82,276,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF0CFF00" FontSize="16" FontStyle="Italic"/>
+
+    </Grid>
+</UserControl>

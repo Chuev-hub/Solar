@@ -1,0 +1,143 @@
+﻿<UserControl x:Class="Solar.UI.Views.AccountPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Solar.UI.Views"
+             xmlns:ist="clr-namespace:Solar.UI.Infrastructure"
+             xmlns:vm="clr-namespace:Solar.UI.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="900" d:DesignWidth="1448">
+    <UserControl.DataContext>
+        <vm:AccountPageViewModel></vm:AccountPageViewModel>
+    </UserControl.DataContext>
+    <ScrollViewer>
+    <Grid Margin="0,80,0,0">
+            <StackPanel HorizontalAlignment="Center" >
+            <StackPanel   Orientation="Horizontal">
+                <Label Foreground="White" FontSize="16" Content="Email:" FontWeight="Bold"></Label>
+                <Label Foreground="White" FontSize="16" Content="{Binding UserDTO.Email}" FontStyle="Italic"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="White" FontSize="16" Content="Name:" FontWeight="Bold"></Label>
+                <TextBox Margin="40,0,0,0" Width="150" FontSize="16" Text="{Binding UserDTO.Name}" FontStyle="Italic">
+                    <TextBox.BorderBrush>
+                        <SolidColorBrush Color="#FFABADB3" Opacity="0"/>
+                    </TextBox.BorderBrush>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="White" FontSize="16" Content="SurName:" FontWeight="Bold"></Label>
+                <TextBox Margin="15,0,0,0" Width="150" FontSize="16" Text="{Binding UserDTO.SurName}" FontStyle="Italic">
+                    <TextBox.BorderBrush>
+                        <SolidColorBrush Color="#FFABADB3" Opacity="0"/>
+                    </TextBox.BorderBrush>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="White" FontSize="16" Content="Address:" FontWeight="Bold"></Label>
+                <TextBox Margin="25,0,0,0" Width="150"  FontSize="16" Text="{Binding UserDTO.Address}" FontStyle="Italic">
+                    <TextBox.BorderBrush>
+                        <SolidColorBrush Color="#FFABADB3" Opacity="0"/>
+                    </TextBox.BorderBrush>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="White" FontSize="16" Content="Change Password:" FontWeight="Bold"></Label>
+                <StackPanel Margin="40,0,0,0" Width="150">
+                    <Label Foreground="White" FontSize="12" Content="Old Password:" FontWeight="Bold"></Label>
+                    <PasswordBox x:Name="PasswordBox"   FontSize="16"  FontStyle="Italic"/>
+                    <Label Foreground="White" FontSize="12" Content="New Password:" FontWeight="Bold"></Label>
+                    <PasswordBox x:Name="PasswordBox2" FontSize="16"  FontStyle="Italic"/>
+                </StackPanel>
+                <StackPanel Width="128">
+                    <Button Command="{Binding CheckCmd}" CommandParameter="{Binding ElementName=PasswordBox}"  Width="70" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="10,25,0,0" Background="#FF818181" Content="Check" Foreground="White">
+                        <Button.BorderBrush>
+                            <SolidColorBrush Color="#FF707070" Opacity="0"/>
+                        </Button.BorderBrush>
+                    </Button>
+                    <Label Content="{Binding Exc}" Margin="10,20,0,0" FontSize="14" Foreground="Red"></Label>
+                </StackPanel>
+               
+                <Ellipse Fill="{Binding ElipseColor}" Width="10" Height="10" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="10,30,0,0"  ></Ellipse>
+            </StackPanel>
+            <Button  Width="100" HorizontalAlignment="Left" Margin="150,20,0,0" Command="{Binding SaveCmd}" CommandParameter="{Binding ElementName=PasswordBox2}" Background="#FF818181" Content="Save Changes" Foreground="White">
+                <Button.BorderBrush>
+                    <SolidColorBrush Color="#FF707070" Opacity="0"/>
+                </Button.BorderBrush>
+               
+            </Button>
+           
+            <Button Command="{Binding LogoutCmd}" Width="100" HorizontalAlignment="Left" Margin="150,5,0,0" Background="#FF818181" Foreground="White">
+                <Button.BorderBrush>
+                    <SolidColorBrush Color="#FF707070" Opacity="0"/>
+                </Button.BorderBrush> Log out
+            </Button>
+            <Label HorizontalAlignment="Center" Margin="0,20,0,0" Foreground="#FF7A7A7A" FontSize="24">Orders</Label>
+            <StackPanel HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="1000" >
+                    <Label Foreground="White" FontWeight="Bold" FontSize="18">Start Date</Label>
+                    <Label Foreground="White" FontWeight="Bold"  Margin="60,0,0,0" FontSize="18">End Date</Label>
+                    <Label Foreground="White" FontWeight="Bold"  Margin="50,0,0,0" FontSize="18">Price</Label>
+                    <Label Foreground="White" FontWeight="Bold" Margin="100,0,0,0" FontSize="18">IsEnded</Label>
+                    <Label Foreground="#FF7A7A7A" FontWeight="Bold" Margin="270,0,0,0" FontSize="18">Items in Order:</Label>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+                    <ListView ItemsSource="{Binding UserDTO.Orders}" SelectedItem="{Binding SelectedOrder}" Width="600"  Background="{x:Null}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Horizontal" Width="145">
+                                        <Label  Foreground="White"  Content="{Binding StartDate}" FontSize="16"></Label>
+
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Width="145" HorizontalAlignment="Left">
+                                    <Label  Foreground="White" Content="{Binding EndDate}" FontSize="16"></Label>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" Width="145">
+                                            <Label  Foreground="White" Content="{Binding Price}" FontSize="16"></Label>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" Width="145">
+                                                <Ellipse Width="15" Margin="30,0,0,0" Height="15" Fill="{Binding Fill}">
+                                        </Ellipse>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackPanel  Width="600" >
+                        <ListView ItemsSource="{Binding Guitars}" Width="600"  Background="{x:Null}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,30,0">
+                                            <Image  Source="{Binding CharacteristicPhoto}" Width="50" Height="50"></Image>
+
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                            <Label Foreground="White" Content="{Binding Name}" FontSize="16"></Label>
+                                            <Label Foreground="White" Content=" - " FontSize="16"></Label>
+                                            <Label Foreground="White" Content="{Binding Color}" FontSize="16"></Label>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label  Foreground="White" Content="{Binding Price}" FontSize="16"></Label>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </StackPanel>
+                    <Grid Height="60"></Grid>
+
+                </StackPanel>
+
+        </StackPanel>
+    </Grid>
+    </ScrollViewer>
+</UserControl>

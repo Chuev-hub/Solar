@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Solar.UI.Views.GuitarsMainPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Solar.UI.Views"
+             xmlns:vm="clr-namespace:Solar.UI.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="900" d:DesignWidth="1448">
+    <UserControl.DataContext>
+        <vm:GuitarsMainPageViewModel></vm:GuitarsMainPageViewModel>
+    </UserControl.DataContext>
+    <Grid >
+        <ContentControl  x:Name="currentView" Content="{Binding ContentControl}"/>
+    </Grid>
+</UserControl>

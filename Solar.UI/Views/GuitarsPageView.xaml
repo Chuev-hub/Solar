@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="Solar.UI.Views.GuitarsPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Solar.UI.Views"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:vm="clr-namespace:Solar.UI.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="900" d:DesignWidth="1448">
+    <UserControl.DataContext>
+        <vm:GuitarsPageViewModel></vm:GuitarsPageViewModel>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+
+        <Style TargetType="ScrollBar">
+            <Setter Property="Background" Value="#FF121212"/>
+        </Style>
+        <Style x:Key="DefaultButtonStyle"
+           TargetType="{x:Type Button}">
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Focusable="False"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
+    <ScrollViewer>
+    <Grid>
+        <StackPanel>
+        <StackPanel HorizontalAlignment ="Center"  Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Top" Height="70" Margin="0,5,0,0">
+            <Button  Command="{Binding AllCommand }" Style="{DynamicResource DefaultButtonStyle}" Content="ALL" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="#FF7A7A7A" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,0" Padding="5,5,5,8" Background="{x:Null}" >
+                <Button.BorderBrush>
+                    <SolidColorBrush Color="#FF707070" Opacity="0"/>
+                </Button.BorderBrush>
+            </Button>
+            <Button  Command="{Binding  ABCommand}" Style="{DynamicResource DefaultButtonStyle}" Content="AB" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="#FF7A7A7A" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,0" Padding="5,5,5,8" Background="{x:Null}">
+                <Button.BorderBrush>
+                    <SolidColorBrush Color="#FF707070" Opacity="0"/>
+                </Button.BorderBrush>
+            </Button>
+            <Button  Command="{Binding  ECommand}" Style="{DynamicResource DefaultButtonStyle}" Content="E" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="#FF7A7A7A" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,0" Padding="5,5,5,8" Background="{x:Null}">
+                <Button.BorderBrush>
+                    <SolidColorBrush Color="#FF707070" Opacity="0"/>
+                </Button.BorderBrush>
+            </Button>
+            <Button  Command="{Binding GCommand}" Style="{DynamicResource DefaultButtonStyle}" Content="G" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="#FF7A7A7A" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,0" Padding="5,5,5,8" Background="{x:Null}">
+                <Button.BorderBrush>
+                    <SolidColorBrush Color="#FF707070" Opacity="0"/>
+                </Button.BorderBrush>
+            </Button>
+            <Button  Command="{Binding  VCommand}" Style="{DynamicResource DefaultButtonStyle}" Content="V" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="#FF7A7A7A" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,0" Padding="5,5,5,8" Background="{x:Null}">
+                <Button.BorderBrush>
+                    <SolidColorBrush Color="#FF707070" Opacity="0"/>
+                </Button.BorderBrush>
+            </Button>
+        </StackPanel>
+
+        <ListView Margin="0,80,0,0" Background="#FF121212"  Width="900" Height="700" Name="lvDataBinding" SelectedItem="{Binding CurrentGuitar}"  ItemsSource="{Binding Guitars}" SelectionChanged="lvDataBinding_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" MouseDoubleClick="lvDataBinding_MouseDoubleClick_1" BorderThickness="2">
+            <ListView.BorderBrush>
+                <SolidColorBrush Color="#FF0040FF" Opacity="0"/>
+            </ListView.BorderBrush>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <ei:CallMethodAction MethodName="DoubleClickMethod" TargetObject="{Binding}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel  Orientation="Horizontal" MaxWidth="860" >
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate >
+                <DataTemplate>
+                    <Border Margin="0,0,0,8" BorderThickness="2" BorderBrush="#FF7C7C7C">
+                        <StackPanel >
+                            <TextBlock Foreground="#FF7A7A7A" HorizontalAlignment="Center" Text="{Binding Name}" FontWeight="Bold" FontSize="20" />
+                            <Image Source="{Binding CharacteristicPhoto}" Width="200" Height="350" />
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button  Command="{Binding MoreCommand}" Style="{DynamicResource DefaultButtonStyle}" Content="More" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" Foreground="#FF7A7A7A" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,0" Padding="5,5,5,8" Background="{x:Null}" >
+            <Button.BorderBrush>
+                <SolidColorBrush Color="#FF707070" Opacity="0"/>
+            </Button.BorderBrush>
+        </Button>
+        </StackPanel>
+    </Grid>
+    </ScrollViewer>
+</UserControl>
