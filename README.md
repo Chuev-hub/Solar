@@ -1,6 +1,6 @@
 # Solar guitars store
 ## Description
-Offline Store, desktop application. A copy of a [solar-guitars.com](www.solar-guitars.com).
+Offline Store, desktop application. A copy of a [solar-guitars.com](https://www.solar-guitars.com).
 
 It contains products (guitars), and the ability to order, view them, as in a usual online store. Also you can view list of your orders, personal account or, for example, shopping cart.
 
