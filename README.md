@@ -6,6 +6,9 @@ It contains products (guitars), and the ability to order, view them, as in a usu
 
 For start buying, you should register or login to your personal account.
 
+# My Gif
+<img src="https://github.com/Chuev-hub/Solar/blob/master/work.gif" width="384" />
+
 ## Stack 📋
 - C# WPF Application
 - MVVM
